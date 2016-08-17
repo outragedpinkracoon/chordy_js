@@ -7,17 +7,17 @@
     generateNotes: function(fretboardValues)
     {
       var chordNotes = [];
-      if (fretboardValues.length < tuning.length)
+      if (fretboardValues.length < this.tuning.length)
         return chordNotes;
 
       var index = 0;
       for(var fretNumber of fretboardValues)
       {
-        if (fretNumber.ToLower ().Equals ("x")) {
+        if (fretNumber.toLower() ==="x") {
           index++;
           continue;
         }
-        var standardTuningNote = tuning[index];
+        var standardTuningNote = this.tuning[index];
         var note = this.findNote(fretNumber, standardTuningNote);
         chordNotes.Add(note);
         index++;

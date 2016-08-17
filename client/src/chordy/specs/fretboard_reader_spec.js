@@ -1,16 +1,16 @@
 var assert = require('assert');
-var FretboardReader = '../models/fretboardReader';
-var Test = '../models/noteLookup';
+var FretboardReader = require('../models/fretboardReader');
+var NoteLookup = require('../models/noteLookup');
 
 describe('fretboard reader', function(){
 
   beforeEach(function() {
-    this.lookup = new NoteLookup();
-    this.tuning = ["E", "A", "D", "G", "B", "E" ];
+    var lookup = new NoteLookup();
+    var tuning = ["E", "A", "D", "G", "B", "E" ];
     this.reader = new FretboardReader(tuning, lookup);
   });
 
-  it('InvalidNoteQuantityShouldReturnEmptyList', function(){
+  it('Invalid note quantity should return empty list', function(){
     assert.equal(true, true);
     var input = ["x", "x", "x", "x"];
     var result = this.reader.generateNotes(input);
