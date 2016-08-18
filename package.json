@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "mocha specs"
+    "test": "mocha client/src/chordy/specs",
+    "test-debug": "mocha --debug-brk client/src/chordy/specs"
   },
   "author": "",
   "license": "ISC",

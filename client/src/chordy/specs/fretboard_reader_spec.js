@@ -38,13 +38,13 @@ describe('fretboard reader', function () {
     assert.deepEqual(result, ["F", "A"]);
   });
 
+  it('should  return correct fretted note index for 0', function () {
+    assert.equal(true, true);
+    var input = ["F", "F", "A"];
+    var result = this.reader.frettedNoteIndex("0", "E");
+    assert.equal(result, 7);
+  });
 
-  // [Test]
-  // public void FrettedNoteIndexReturnsCorrectValueFor0()
-  // {
-  //   var result = reader.FrettedNoteIndex("0", "E");
-  //   Assert.That(result, Is.EqualTo(7));
-  // }
 
   // [Test]
   // public void FrettedNoteIndexReturnsCorrectValueFor2()

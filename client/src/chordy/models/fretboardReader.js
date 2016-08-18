@@ -37,14 +37,14 @@
     frettedNoteIndex: function(fretboardPosition, openNote)
     {
      var fretNumber = parseInt(fretboardPosition);
-     var noteIndex = notes.indexOf(openNote);
+     var noteIndex = this.notes.indexOf(openNote);
      var frettedNoteIndex = fretNumber + noteIndex;
      var validFrettedNoteIndex = this.validNoteIndex(frettedNoteIndex);
      return validFrettedNoteIndex;
    },
    validNoteIndex: function(frettedNoteIndex)
    {
-     var numberOfNotes = notes.Count;
+     var numberOfNotes = this.notes.length;
      if (frettedNoteIndex < numberOfNotes - 1)
        return frettedNoteIndex;
      var overflowTimes = frettedNoteIndex / numberOfNotes;
