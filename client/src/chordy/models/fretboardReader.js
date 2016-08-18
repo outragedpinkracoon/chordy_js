@@ -13,7 +13,7 @@
       var index = 0;
       for(var fretNumber of fretboardValues)
       {
-        if (fretNumber.toLower() ==="x") {
+        if (fretNumber.toLowerCase() ==="x") {
           index++;
           continue;
         }

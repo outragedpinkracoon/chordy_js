@@ -10,21 +10,20 @@ describe('fretboard reader', function(){
     this.reader = new FretboardReader(tuning, lookup);
   });
 
-  it('Invalid note quantity should return empty list', function(){
+  it('should return empty list for invalid note quantity', function(){
     assert.equal(true, true);
     var input = ["x", "x", "x", "x"];
     var result = this.reader.generateNotes(input);
     assert.equal(result.length,0);
   });
 
+    it('should return empty list for all lower X notes', function(){
+    assert.equal(true, true);
+    var input = ["x", "x", "x", "x", "x", "x"];
+    var result = this.reader.generateNotes(input);
+    assert.equal(result.length,0);
+  });
 
-  // [Test]
-  // public void AllLowerXNotesReturnsEmptyList()
-  // {
-  //   var input = new List<string>() { "x", "x", "x", "x", "x", "x" };
-  //   var result = reader.GenerateNotes(input);
-  //   Assert.That(result, Is.Empty);
-  // }
 
   // [Test]
   // public void WithUpperXNotesReturnsEmpty()
