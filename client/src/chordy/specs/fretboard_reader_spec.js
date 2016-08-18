@@ -2,28 +2,34 @@ var assert = require('assert');
 var FretboardReader = require('../models/fretboardReader');
 var NoteLookup = require('../models/noteLookup');
 
-describe('fretboard reader', function(){
+describe('fretboard reader', function () {
 
-  beforeEach(function() {
+  beforeEach(function () {
     var lookup = new NoteLookup();
-    var tuning = ["E", "A", "D", "G", "B", "E" ];
+    var tuning = ["E", "A", "D", "G", "B", "E"];
     this.reader = new FretboardReader(tuning, lookup);
   });
 
-  it('should return empty list for invalid note quantity', function(){
+  it('should return empty list for invalid note quantity', function () {
     assert.equal(true, true);
     var input = ["x", "x", "x", "x"];
     var result = this.reader.generateNotes(input);
-    assert.equal(result.length,0);
+    assert.equal(result.length, 0);
   });
 
-    it('should return empty list for all lower X notes', function(){
+  it('should return empty list for all lower X notes', function () {
     assert.equal(true, true);
     var input = ["x", "x", "x", "x", "x", "x"];
     var result = this.reader.generateNotes(input);
-    assert.equal(result.length,0);
+    assert.equal(result.length, 0);
   });
 
+  it('should return empty list for all upper X notes', function () {
+    assert.equal(true, true);
+    var input = ["X", "X", "X", "X", "X", "X"];
+    var result = this.reader.generateNotes(input);
+    assert.equal(result.length, 0);
+  });
 
   // [Test]
   // public void WithUpperXNotesReturnsEmpty()
