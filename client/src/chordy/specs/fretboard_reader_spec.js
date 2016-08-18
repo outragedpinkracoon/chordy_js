@@ -31,21 +31,13 @@ describe('fretboard reader', function () {
     assert.equal(result.length, 0);
   });
 
-  // [Test]
-  // public void WithUpperXNotesReturnsEmpty()
-  // {
-  //   var input = new List<string>() { "X", "x", "X", "x", "X", "x" };
-  //   var result = reader.GenerateNotes(input);
-  //   Assert.That(result, Is.Empty);
-  // }
+  it('should remove duplicate notes', function () {
+    assert.equal(true, true);
+    var input = ["F", "F", "A"];
+    var result = this.reader.removeDuplicateNotes(input);
+    assert.equal(result, ["F", "A"]);
+  });
 
-  // [Test]
-  // public void ShouldRemoveDuplicateNotes()
-  // {
-  //   var input = new List<string>() { "F", "F", "A" };
-  //   var result = reader.RemoveDuplicateNotes(input);
-  //   Assert.That(result, Is.EqualTo(new List<string>() { "F", "A" }));
-  // }
 
   // [Test]
   // public void FrettedNoteIndexReturnsCorrectValueFor0()
