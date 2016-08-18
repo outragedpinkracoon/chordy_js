@@ -35,7 +35,7 @@ describe('fretboard reader', function () {
     assert.equal(true, true);
     var input = ["F", "F", "A"];
     var result = this.reader.removeDuplicateNotes(input);
-    assert.equal(result, ["F", "A"]);
+    assert.deepEqual(result, ["F", "A"]);
   });
 
 
