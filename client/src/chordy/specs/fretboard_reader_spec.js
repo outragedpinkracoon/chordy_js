@@ -38,69 +38,55 @@ describe('fretboard reader', function () {
     assert.deepEqual(result, ["F", "A"]);
   });
 
-  it('should  return correct fretted note index for 0', function () {
-    assert.equal(true, true);
-    var input = ["F", "F", "A"];
+  it('should return correct fretted note index for 0', function () {
     var result = this.reader.frettedNoteIndex("0", "E");
     assert.equal(result, 7);
   });
 
+  it('should return correct fretted note index for input 0', function () {
+    var result = this.reader.frettedNoteIndex("0", "E");
+    assert.equal(result, 7);
+  });
 
-  // [Test]
-  // public void FrettedNoteIndexReturnsCorrectValueFor2()
-  // {
-  //   var result = reader.FrettedNoteIndex("2", "E");
-  //   Assert.That(result, Is.EqualTo(9));
-  // }
+  it('should return correct fretted note index for input 2', function () {
+    var result = this.reader.frettedNoteIndex("2", "E");
+    assert.equal(result, 9);
+  });
 
-  // [Test]
-  // public void ValidNoteIndexLessThanMaxLengthOfNotes()
-  // {
-  //   var result = reader.ValidNoteIndex(2);
-  //   Assert.That(result, Is.EqualTo(2));
-  // }
+  it('should return original note when input is less than maximum possible note index', function () {
+    var result = this.reader.validNoteIndex(2);
+    assert.equal(result, 2);
+  });
 
-  // [Test]
-  // public void ValidNoteIndexLastItemPlus1()
-  // {
-  //   var result = reader.ValidNoteIndex(12);
-  //   Assert.That(result, Is.EqualTo(0));
-  // }
+  it('should return first note index when input is one more than than maximum possible note index', function () {
+    var result = this.reader.validNoteIndex(12);
+    assert.equal(result, 0);
+  });
+
+  it('should return index 4 when input is 5 more than than maximum possible note index', function () {
+    var result = this.reader.validNoteIndex(16);
+    assert.equal(result, 4);
+  });
+
+  it('should return index 2 when input is 15 more than than maximum possible note index', function () {
+    var result = this.reader.validNoteIndex(26);
+    assert.equal(result, 2);
+  });
+
+  it('should generate notes', function () {
+    var result = this.reader.generateNotes(["3", "2", "0", "0", "3", "3"]);
+    assert.deepEqual(result, ["G", "B", "D"]);
+  });
+
+  it('should generate muted notes', function () {
+    var result = this.reader.generateNotes(["X", "3", "2", "0", "1", "0" ]);
+    assert.deepEqual(result, ["C", "E", "G"]);
+  });
 
 
-  // [Test]
-  // public void ValidNoteIndexLastItemPlus5()
-  // {
-  //   var result = reader.ValidNoteIndex(16);
-  //   Assert.That(result, Is.EqualTo(4));
-  // }
-
-  // [Test]
-  // public void ValidNoteIndexLastItemPlus15()
-  // {
-  //   var result = reader.ValidNoteIndex(26);
-  //   Assert.That(result, Is.EqualTo(2));
-  // }
-
-  // [Test]
-  // public void ShouldGenerateNotes()
-  // {
-  //   var result = reader.GenerateNotes(new List<string> { "3", "2", "0", "0", "3", "3" });
-  //   Assert.That(result, Is.EqualTo(new List<string> { "G", "B", "D" }));
-  // }
-
-  // [Test]
-  // public void ShouldGenerateNotes_Muted()
-  // {
-  //   var result = reader.GenerateNotes(new List<string> { "X", "3", "2", "0", "1", "0" });
-  //   Assert.That(result, Is.EqualTo(new List<string> { "C", "E", "G" }));
-  // }
-
-  // [Test]
-  // public void ShouldGenerateNotes_Muted_Overflow()
-  // {
-  //   var result = reader.GenerateNotes(new List<string> { "X", "15", "17", "17", "0", "0" });
-  //   Assert.That(result, Is.EqualTo(new List<string> { "C", "G", "B", "E" }));
-  // }
+  it('should generate muted overflow notes', function () {
+    var result = this.reader.generateNotes(["X", "15", "17", "17", "0", "0"]);
+    assert.deepEqual(result, ["C", "G", "B", "E"]);
+  });
 
 })

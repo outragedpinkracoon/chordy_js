@@ -1,11 +1,10 @@
-  var FretboardReader = function(tuning, noteLookup){
+  var FretboardReader = function(tuning, noteLookup) {
     this.tuning = tuning;
     this.notes = noteLookup.notes;
   }
 
   FretboardReader.prototype = {
-    generateNotes: function(fretboardValues)
-    {
+    generateNotes: function(fretboardValues) {
       var chordNotes = [];
       if (fretboardValues.length < this.tuning.length)
         return chordNotes;
@@ -19,7 +18,7 @@
         }
         var standardTuningNote = this.tuning[index];
         var note = this.findNote(fretNumber, standardTuningNote);
-        chordNotes.Add(note);
+        chordNotes.push(note);
         index++;
       }
 
@@ -28,31 +27,27 @@
       return uniqueNotes;
 
     },
-    findNote: function(fretboardPosition, openNote)
-    {
+    findNote: function(fretboardPosition, openNote) {
       var frettedNoteIndex = this.frettedNoteIndex(fretboardPosition, openNote);
-      var frettedNote = notes[frettedNoteIndex];
+      var frettedNote = this.notes[frettedNoteIndex];
       return frettedNote;
     },
-    frettedNoteIndex: function(fretboardPosition, openNote)
-    {
+    frettedNoteIndex: function(fretboardPosition, openNote) {
      var fretNumber = parseInt(fretboardPosition);
      var noteIndex = this.notes.indexOf(openNote);
      var frettedNoteIndex = fretNumber + noteIndex;
      var validFrettedNoteIndex = this.validNoteIndex(frettedNoteIndex);
      return validFrettedNoteIndex;
    },
-   validNoteIndex: function(frettedNoteIndex)
-   {
+   validNoteIndex: function(frettedNoteIndex) {
      var numberOfNotes = this.notes.length;
      if (frettedNoteIndex < numberOfNotes - 1)
        return frettedNoteIndex;
-     var overflowTimes = frettedNoteIndex / numberOfNotes;
+     var overflowTimes = Math.floor(frettedNoteIndex / numberOfNotes);
      var multiplier = overflowTimes * numberOfNotes;
      return frettedNoteIndex - multiplier;
    },
-   removeDuplicateNotes: function(chordNotes)
-   {
+   removeDuplicateNotes: function(chordNotes) {
      var uniqueNotes = [];
 
      for(var note of chordNotes)
