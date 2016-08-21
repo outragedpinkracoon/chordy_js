@@ -11,28 +11,24 @@ describe('fretboard reader', function () {
   });
 
   it('should return empty list for invalid note quantity', function () {
-    assert.equal(true, true);
     var input = ["x", "x", "x", "x"];
     var result = this.reader.generateNotes(input);
     assert.equal(result.length, 0);
   });
 
   it('should return empty list for all lower X notes', function () {
-    assert.equal(true, true);
     var input = ["x", "x", "x", "x", "x", "x"];
     var result = this.reader.generateNotes(input);
     assert.equal(result.length, 0);
   });
 
   it('should return empty list for all upper X notes', function () {
-    assert.equal(true, true);
     var input = ["X", "X", "X", "X", "X", "X"];
     var result = this.reader.generateNotes(input);
     assert.equal(result.length, 0);
   });
 
   it('should remove duplicate notes', function () {
-    assert.equal(true, true);
     var input = ["F", "F", "A"];
     var result = this.reader.removeDuplicateNotes(input);
     assert.deepEqual(result, ["F", "A"]);

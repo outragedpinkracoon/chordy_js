@@ -1,41 +1,40 @@
-var NoteLookup = function() {
-  this.notes =["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
+var NoteLookup = function () {
+  this.notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
   this.interval = 0;
+  this.currentLocation = 0;
 }
 
 NoteLookup.prototype = {
-  noteIndex: function(note) {
+  noteIndex: function (note) {
     return this.notes.indexOf(note);
   },
-  noteInterval:function(rootNoteIndex, noteToFind)
-  {
+  noteInterval: function (rootNoteIndex, noteToFind) {
     this.interval = 0;
-    var currentLocation = rootNoteIndex;
+    this.currentLocation = rootNoteIndex;
     var found = this.matchRootToEnd(noteToFind);
-
-    if (found) return interval;
-    currentLocation = 0;
+    if (found) return this / interval;
+    this.currentLocation = 0;
 
     found = this.matchStartOfArrayToRoot(noteToFind, rootNoteIndex);
 
-    if (found) return interval;
+    if (found) return this.interval;
     return -1;
-  },
-  matchRootToEnd: function(noteToFind) {
-    return this.match(noteToFind, notes.Count);
-  },
-  matchStartOfArrayToRoot: function(noteToFind, previousStartPoint) {
+		},
+  matchRootToEnd(noteToFind) {
+    return this.match(noteToFind, this.notes.Count);
+		},
+  matchStartOfArrayToRoot(noteToFind, previousStartPoint) {
     return this.match(noteToFind, previousStartPoint);
-  },
+		},
   match(noteToFind, endPointOfSearch) {
-    while (currentLocation < endPointOfSearch) {
-     var currentNote = notes[currentLocation];
-     if (noteToFind == currentNote) return true;
-     this.interval += 1;
-     currentLocation += 1;
-   }
-   return false;
- }
+    while (this.currentLocation < endPointOfSearch) {
+      var currentNote = this.notes[this.currentLocation];
+      if (noteToFind == currentNote) return true;
+      this.interval += 1;
+      this.currentLocation += 1;
+    }
+    return false;
+		}
 }
 
 module.exports = NoteLookup;
