@@ -12,7 +12,7 @@ NoteLookup.prototype = {
     this.interval = 0;
     this.currentLocation = rootNoteIndex;
     var found = this.matchRootToEnd(noteToFind);
-    if (found) return this / interval;
+    if (found) return this.interval;
     this.currentLocation = 0;
 
     found = this.matchStartOfArrayToRoot(noteToFind, rootNoteIndex);
@@ -21,19 +21,23 @@ NoteLookup.prototype = {
     return -1;
 		},
   matchRootToEnd(noteToFind) {
-    return this.match(noteToFind, this.notes.Count);
+    return this.match(noteToFind, this.notes.length);
 		},
   matchStartOfArrayToRoot(noteToFind, previousStartPoint) {
     return this.match(noteToFind, previousStartPoint);
 		},
   match(noteToFind, endPointOfSearch) {
+    var found = false;
     while (this.currentLocation < endPointOfSearch) {
       var currentNote = this.notes[this.currentLocation];
-      if (noteToFind == currentNote) return true;
+      if (noteToFind === currentNote) {
+        found = true;
+        break;
+      }
       this.interval += 1;
       this.currentLocation += 1;
     }
-    return false;
+    return found;
 		}
 }
 

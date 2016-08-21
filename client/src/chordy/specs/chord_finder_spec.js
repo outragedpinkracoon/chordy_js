@@ -28,16 +28,11 @@ describe('fretboard reader', function () {
     var result = this.finder.noteIntervals(input, rootNoteIndex);
     assert.deepEqual(result, [0, 4, 7]);
   });
+
+  it('should return note intervals looping', function () {
+    var input = ["G", "B", "D" ];
+    var rootNoteIndex = 10;
+    var result = this.finder.noteIntervals(input, rootNoteIndex);
+    assert.deepEqual(result, [0, 4, 7]);
+  });
 })
-
-// 		[Test]
-// 		public void TestNoteIntervalsLooping()
-// 		{
-// 			var chordNotes = new List<string> { "G", "B", "D" };
-// 			var rootNoteIndex = 10;
-// 			var result = finder.NoteIntervals(chordNotes, rootNoteIndex);
-// 			Assert.That(result, Is.EqualTo(new List<int> { 0, 4, 7 }));
-// 		}
-
-// 	}
-// }
