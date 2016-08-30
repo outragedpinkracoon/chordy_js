@@ -6,12 +6,10 @@
   FretboardReader.prototype = {
     generateNotes: function(fretboardValues) {
       var chordNotes = [];
-      if (fretboardValues.length < this.tuning.length)
-        return chordNotes;
+      if (fretboardValues.length < this.tuning.length) return chordNotes;
 
       var index = 0;
-      for(var fretNumber of fretboardValues)
-      {
+      for(var fretNumber of fretboardValues) {
         if (fretNumber.toLowerCase() ==="x") {
           index++;
           continue;
@@ -23,7 +21,6 @@
       }
 
       var uniqueNotes = this.removeDuplicateNotes(chordNotes);
-
       return uniqueNotes;
 
     },
@@ -41,8 +38,7 @@
    },
    validNoteIndex: function(frettedNoteIndex) {
      var numberOfNotes = this.notes.length;
-     if (frettedNoteIndex < numberOfNotes - 1)
-       return frettedNoteIndex;
+     if (frettedNoteIndex < numberOfNotes - 1) return frettedNoteIndex;
      var overflowTimes = Math.floor(frettedNoteIndex / numberOfNotes);
      var multiplier = overflowTimes * numberOfNotes;
      return frettedNoteIndex - multiplier;
@@ -50,8 +46,7 @@
    removeDuplicateNotes: function(chordNotes) {
      var uniqueNotes = [];
 
-     for(var note of chordNotes)
-     {
+     for(var note of chordNotes) {
        if (uniqueNotes.indexOf(note) == -1) {
          uniqueNotes.push(note);
        }
