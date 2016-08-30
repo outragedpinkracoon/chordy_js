@@ -1,8 +1,9 @@
 var assert = require('assert');
 var ChordLookup = require('../models/chordLookup');
 
-describe('chord lookup', function () {
+describe('chordy runner', function () {
   var lookup;
+
   beforeEach(function () {
     lookup = new ChordLookup();
   });
@@ -12,7 +13,6 @@ describe('chord lookup', function () {
     var result = lookup.convertToKey(input);
     assert.equal(result, "0-4-7");
   });
-
 
   it('should lookup major chord', function () {
     var result = lookup.findChord([0,4,7], "C");
