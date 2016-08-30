@@ -15,7 +15,7 @@ ChordFinder.prototype = {
   },
   findChord: function(intervalsArray, rootNote) {
     var result = rootNote + " ";
-    var key = ConvertToKey(intervalsArray);
+    var key = this.convertToKey(intervalsArray);
     var chord = this.chordDictionary[key]
     result = chord ? result + chord : "Chord not found";
     return result;

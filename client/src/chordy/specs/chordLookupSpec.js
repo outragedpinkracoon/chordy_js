@@ -13,4 +13,15 @@ describe('chord lookup', function () {
     assert.equal(result, "0-4-7");
   });
 
+
+  it('should lookup major chord', function () {
+    var result = lookup.findChord([0,4,7], "C");
+    assert.equal(result, "C Major");
+  });
+
+  it('should lookup minor chord', function () {
+    var result = lookup.findChord([0,3,7], "A");
+    assert.equal(result, "A Minor");
+  });
+
 });
