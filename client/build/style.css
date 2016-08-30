@@ -49,6 +49,8 @@ FRETBOARD
   display: inline-block;
   background-color: #663300;
   background-image: url("/retina-wood.png");
+
+  transform: rotate(45deg);
   /* Background pattern from subtlepatterns.com */
 }
 
