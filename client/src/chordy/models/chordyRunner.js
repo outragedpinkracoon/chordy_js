@@ -10,7 +10,7 @@ var ChordyRunner = function() {
   this.chordLookup = new ChordLookup();
 }
 ChordyRunner.prototype = {
-  run: function(fretboardConfig){
+  findChord: function(fretboardConfig){
     var chordNotes = this.reader.generateNotes(fretboardConfig);
     var rootNoteIndex = this.chordFinder.rootNoteIndex(chordNotes);
     var intervalsArray = this.chordFinder.noteIntervals(chordNotes, rootNoteIndex);
