@@ -20,7 +20,7 @@ Fretboard.prototype = {
     var template = Handlebars.compile(source);
     var neck = document.getElementById("neck");
 
-    for(var i = 0; i < 22;i++){
+    for(var i = 0; i < 22;i++) {
       var context = {fret_id:(i + 1), notes: this.notes}
       var html = template(context);
       neck.innerHTML = neck.innerHTML + html;
@@ -32,8 +32,7 @@ Fretboard.prototype = {
     for(var i =0; i < elements.length; i++){
       var elem = elements[i];   
       elem.onclick = function(e){
-        alert(e.currentTarget.innerText);
-        return false;
+        e.currentTarget.classList.add("selected");
       };
     } 
   }
