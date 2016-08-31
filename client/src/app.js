@@ -6,11 +6,11 @@ window.onload = function () {
   var elements = document.querySelectorAll(".js-fret > div > p");
   
   for(var i =0; i < elements.length; i++){
-      var elem = elements[i];   
-      elem.onclick = function(e){
-          alert(e.currentTarget.innerText);
-          return false;
-      };
+    var elem = elements[i];   
+    elem.onclick = function(e){
+      alert(e.currentTarget.innerText);
+      return false;
+    };
   }
   
 }
