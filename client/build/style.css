@@ -195,6 +195,10 @@ FRETBOARD
  background: rgba(240, 0, 0, 0.5); 
 }
 
+.js-fret p:hover {
+  cursor: pointer;
+}
+
 .hidden {
   display:none;
 }
