@@ -20,9 +20,19 @@ window.onload = function () {
     var source = document.getElementById("fret-template").innerHTML;
     var template = Handlebars.compile(source);
     var neck = document.getElementById("neck");
+    var notes = [
+      {key:"a", value:"e"},
+      {key:"b", value:"b"},
+      {key:"c", value:"g"},
+      {key:"d", value:"d"},
+      {key:"e", value:"a"},
+      {key:"f", value:"e"},
+    ];
+
     for(var i = 1; i < 23;i++){
-      var context = {fret_id:i}
+      var context = {fret_id:i, notes: notes}
       var html = template(context);
+
       neck.innerHTML = neck.innerHTML + html;
     }
   }
