@@ -10,17 +10,14 @@
 <body>
 
   <section>
-
     <div id ="neck">
-
     </div>
-
   </section>
 
 <script id="fret-template" type="text/x-handlebars-template">
   <div class="js-fret fret-{{fret_id}}" id="fret-template">
     {{#each notes}}
-    <div class="string-divider" id="{{this.id}}">
+    <div class="string-divider">
       {{#if this.value}}
       <p>{{this.value}}</p>
       {{/if}}

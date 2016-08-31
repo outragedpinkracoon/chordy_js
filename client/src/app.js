@@ -21,17 +21,17 @@ window.onload = function () {
     var template = Handlebars.compile(source);
     var neck = document.getElementById("neck");
     var notes = [
-      {id:"a", value:"e"},
-      {id:"b", value:"b"},
-      {id:"c", value:"g"},
-      {id:"d", value:"d"},
-      {id:"e", value:"a"},
-      {id:"f", value:"e"},
-      {id:"g"}
+      {string:"1", value:"e"},
+      {string:"2", value:"b"},
+      {string:"3", value:"g"},
+      {string:"4", value:"d"},
+      {string:"5", value:"a"},
+      {string:"6", value:"e"},
+      {string:"spacer"}
     ];
 
-    for(var i = 1; i < 23;i++){
-      var context = {fret_id:i, notes: notes}
+    for(var i = 0; i < 22;i++){
+      var context = {fret_id:(i + 1), notes: notes}
       var html = template(context);
 
       neck.innerHTML = neck.innerHTML + html;
