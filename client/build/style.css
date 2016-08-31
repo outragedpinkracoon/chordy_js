@@ -52,7 +52,7 @@ FRETBOARD
 
 }
 
-.string-divider(:last-child){
+.string-divider:last-child{
   border-bottom: 2px solid black;
   box-shadow: 
           inset 0px 11px 10px -10px #333333,
