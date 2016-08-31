@@ -4,7 +4,12 @@ config = {
     filename: "bundle.js",
     path: "./build"
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  resolve: {
+    alias: {
+     handlebars: 'handlebars/dist/handlebars.min.js'
+   }
+ }
 }
 
 module.exports = config;
