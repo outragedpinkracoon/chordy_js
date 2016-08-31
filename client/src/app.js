@@ -27,6 +27,7 @@ window.onload = function () {
       {id:"d", value:"d"},
       {id:"e", value:"a"},
       {id:"f", value:"e"},
+      {id:"g"}
     ];
 
     for(var i = 1; i < 23;i++){
