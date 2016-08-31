@@ -20,8 +20,8 @@ window.onload = function () {
     var source = document.getElementById("fret-template").innerHTML;
     var template = Handlebars.compile(source);
     var neck = document.getElementById("neck");
-    for(var i = 0; i < 22;i++){
-      var context = {}
+    for(var i = 1; i < 23;i++){
+      var context = {fret_id:i}
       var html = template(context);
       neck.innerHTML = neck.innerHTML + html;
     }

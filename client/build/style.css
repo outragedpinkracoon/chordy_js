@@ -94,7 +94,7 @@ FRETBOARD
 }
 
 
-#fret-1, #fret-2, #fret-3, #fret-4, #fret-5, #fret-6, #fret-7, #fret-8, #fret-9, #fret-10, #fret-11, #fret-12, #fret-13, #fret-14, #fret-15, #fret-16, #fret-17, #fret-18, #fret-19, #fret-20, #fret-21, #fret-22{
+.fret-1, .fret-2, .fret-3, .fret-4, .fret-5, .fret-6, .fret-7, .fret-8, .fret-9, .fret-10, .fret-11, .fret-12, .fret-13, .fret-14, .fret-15, .fret-16, .fret-17, .fret-18, .fret-19, .fret-20, .fret-21, .fret-22{
   display: inline-block;  
   float:left;
   padding: 0;
@@ -103,91 +103,91 @@ FRETBOARD
   text-align: center;
 }
 
-#fret-22 {  
+.fret-22 {  
   width: 2%;
 }
 
-#fret-21 {
+.fret-21 {
   width: 2.2%;
 }
 
-#fret-20 {
+.fret-20 {
   width: 2.4%;
 }
 
-#fret-19 {
+.fret-19 {
   width: 2.6%;
 }
 
-#fret-18 {
+.fret-18 {
   width: 2.8%;
 }
 
-#fret-17 {
+.fret-17 {
   width: 3%;
 }
 
-#fret-16 {
+.fret-16 {
   width: 3.2%;
 }
 
-#fret-15{
+.fret-15{
   width: 3.4%;
 }
 
-#fret-14{
+.fret-14{
   width: 3.6%;
 }
 
-#fret-13  {
+.fret-13  {
   width: 3.9%;
 }
 
-#fret-12  {
+.fret-12  {
   width: 4.1%;
 }
 
-#fret-11 {
+.fret-11 {
   width: 4.3%;
 }
 
-#fret-10  {
+.fret-10  {
   width: 4.5%;
 }
 
-#fret-9  {
+.fret-9  {
   width: 4.7%;
 }
 
-#fret-8  {
+.fret-8  {
   width: 5.2%;
 }
 
-#fret-7  {
+.fret-7  {
   width: 5.5%;
 }
 
-#fret-6  {
+.fret-6  {
   width: 5.7%;
 }
 
-#fret-5  {
+.fret-5  {
   width: 6.2%;
 }
 
-#fret-4  {
+.fret-4  {
   width: 6.5%;
 }
 
-#fret-3 {
+.fret-3 {
   width: 7%;
 }
 
-#fret-2  {
+.fret-2  {
   width: 8.3%;
 }
 
-#fret-1{
+.fret-1{
   width: 8.9%;
 }
 
