@@ -21,12 +21,12 @@ window.onload = function () {
     var template = Handlebars.compile(source);
     var neck = document.getElementById("neck");
     var notes = [
-      {key:"a", value:"e"},
-      {key:"b", value:"b"},
-      {key:"c", value:"g"},
-      {key:"d", value:"d"},
-      {key:"e", value:"a"},
-      {key:"f", value:"e"},
+      {id:"a", value:"e"},
+      {id:"b", value:"b"},
+      {id:"c", value:"g"},
+      {id:"d", value:"d"},
+      {id:"e", value:"a"},
+      {id:"f", value:"e"},
     ];
 
     for(var i = 1; i < 23;i++){

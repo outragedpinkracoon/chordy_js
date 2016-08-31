@@ -17,14 +17,16 @@
 
   </section>
 
-  <script id="fret-template" type="text/x-handlebars-template">
-   <div class="js-fret fret-{{fret_id}}" id="fret-template">
-     {{#each notes}}
-     <div id="{{this.key}}"><p>{{this.value}}</p></div>
-     {{/each}}
-     <div id="g"></div>
-   </div>
- </script>
+<script id="fret-template" type="text/x-handlebars-template">
+  <div class="js-fret fret-{{fret_id}}" id="fret-template">
+    {{#each notes}}
+    <div id="{{this.id}}">
+      <p>{{this.value}}</p>
+    </div>
+    {{/each}}
+    <div id="g"></div>
+  </div>
+</script>
 
 </body>
 
