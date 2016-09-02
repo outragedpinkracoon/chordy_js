@@ -8,18 +8,35 @@ var Notes = function(domState, observers){
 
 Notes.prototype = {
   onClick: function(e){
-    this.domState.toggleClass(this.selectedClass, e.currentTarget.classList, this.maxSelection)
+    var target = e.currentTarget;
+    var thing = this.stringAlreadySelected(target);
+    if(thing) return;
+
+    this.domState.toggleClass(this.selectedClass, target.classList, this.maxSelection)
+    
     var currentlySelected = this.domState.elementsOfClass(this.selectedClass);
     this.notify({
       maxReached: currentlySelected.length == this.maxSelection,
       notesSelected: this.getNotes(currentlySelected)
     });
   },
+  stringAlreadySelected: function(element){
+    var stringNumber = element.dataset.string;
+    var selectedAlready = this.getSelectedNotesOnString(stringNumber);
+    return selectedAlready.length > 0;
+  },
   getNotes: function(selectedNotes){
-    var results = [];
-    for(element of selectedNotes) {
-      results.push[element.innerText];
-    }
+    // var results = [];
+    // for(var i = 1; i<7; i++){
+    //   var playedNotes = this.getSelectedNotesOnString(i);
+    //   for(var note of playedNotes) {
+    //     results.push(note.innerText);
+    //   }
+    // }
+    // console.log(results);
+  },
+  getSelectedNotesOnString: function(stringIndex) {
+    return document.querySelectorAll('p[data-string="'+stringIndex+'"].selected-note');
   },
   attachEvents: function(){
     var elements = document.querySelectorAll(".js-fret > div > p");
