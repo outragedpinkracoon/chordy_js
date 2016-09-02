@@ -18,11 +18,10 @@ Notes.prototype = {
   notifyObservers: function(){
    var currentlySelected = this.domState.elementsOfClass(this.selectedClass);
 
-   if(!this.maxNotesReached(currentlySelected)) return;
-
    for(var observer of this.observers){
      observer.notify({
-        notesSelected: this.getNotes(currentlySelected)
+        notesSelected: this.getNotes(currentlySelected),
+        maxReached: this.maxNotesReached(currentlySelected)
      });
    }
   },

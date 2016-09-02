@@ -19,7 +19,14 @@ ChordyRunner.prototype = {
     return chord;
   },
   notify: function(context){
-    console.log(context);
+    if(context.maxReached) {
+      var result = this.findChord(context.notesSelected);
+      document.getElementById('result').innerText = result;
+    }
+    else {
+      document.getElementById('result').innerText = "";
+    }
+    
   }
 }
 module.exports = ChordyRunner
