@@ -1,10 +1,12 @@
 var Notes = function(domState, observers){
   this.attachEvents();
-  this.selectedClass = "selected-note";
   this.domState = domState;
   this.maxSelection = 6;
   this.observers = observers;
   this.parentClass = ".js-fret";
+  this.selectedClass = "selected-note";
+  this.resetFlag = "reset";
+  this.touchedFlag = "touched";
 }
 
 Notes.prototype = {
@@ -13,22 +15,18 @@ Notes.prototype = {
     this.clearString(target);
     this.toggleText(target);
 
-    if(this.domState.hasClass("reset", target.classList)) {
-      this.domState.removeClass(this.selectedClass, target.classList);
-      this.domState.removeClass("reset", target.classList);
-      this.domState.removeClass("touched", target.classList);
+    if(this.domState.hasClass(this.resetFlag, target.classList)) {
+      this.domState.removeClasses([this.selectedClass, this.resetFlag, this.touchedFlag], target.classList);
     }
     else {
-      this.domState.addClass(this.selectedClass, target.classList);
-      this.domState.addClass("touched", target.classList);
+      this.domState.addClasses([this.selectedClass, this.touchedFlag], target.classList);
     }
-    //this.domState.toggleClass(this.selectedClass, target.classList, this.maxSelection)
-
     this.notifyObservers();
   },
+  //shit this is horrible
   toggleText: function(target){
     if(target.innerText === "X") {
-      this.domState.addClass("reset", target.classList);
+      this.domState.addClass(this.resetFlag, target.classList);
       this.resetLetter(target);
       return;
     }
@@ -36,7 +34,7 @@ Notes.prototype = {
       target.innerText = "X";
       return;
     }
-    if(this.domState.hasClass("touched", target.classList)) {
+    if(this.domState.hasClass(this.touchedFlag, target.classList)) {
       target.innerText = "O";
     }
   },

@@ -14,6 +14,11 @@ DomState.prototype ={
   removeClass: function(classToRemove, classList){
     classList.remove(classToRemove);
   },
+  removeClasses: function(classesToRemove, classList){
+    for(classToRemove of classesToRemove) {
+      this.removeClass(classToRemove, classList);
+    }
+  },
   maximumSelected: function(classToFind, maxSelection){
     var selectedAlready = this.elementsOfClass(classToFind);
     return selectedAlready.length >= maxSelection;
@@ -24,6 +29,11 @@ DomState.prototype ={
   addClass: function(classToAdd, classList){
     classList.add(classToAdd);
   },  
+  addClasses: function(classesToAdd, classList){
+    for(classToAdd of classesToAdd) {
+      this.addClass(classToAdd, classList);
+    }
+  },
   doesNotHaveClass: function(classToFind, classList){
     return !this.hasClass(classToFind, classList);
   },
