@@ -2,8 +2,8 @@
 
 Functionality:
 
-1. Stop selecting elements after 6
-2. Unselect an element on the second click
+1. Stop selecting elements after 6 - DONE, Val
+2. Unselect an element on the second click - DONE, Val
 3. Convert the selected notes into an array
 4. Send that array to Chordy to figure out the chord
 5. Display the Result on the screen
