@@ -208,6 +208,7 @@ FRETBOARD
 .tuning {
   padding: 0;
   text-align: center;
+  font-color: brown;
 }
 
 .container {

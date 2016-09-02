@@ -50,6 +50,9 @@ Notes.prototype = {
      });
    }
   },
+  resetLetter(note) {
+    note.innerText = " ";
+  },
   maxNotesReached: function(currentlySelected){
     return currentlySelected.length == this.maxSelection
   },
@@ -63,9 +66,6 @@ Notes.prototype = {
       this.resetLetter(note);
     }
     return collision;
-  },
-  resetLetter: function(note){
-    note.innerText = note.dataset.original;
   },
   isSameNote: function(clickedElement, noteToCheck){
     var fretNumber = clickedElement.closest(this.parentClass).dataset.fret;

@@ -9,6 +9,11 @@
 <body>
   <h1>Chordy</h1>
   <p>Press the circles to select notes on the fretboard.</p>
+  <ul>
+    <li>Once: hold note</li>
+    <li>Twice: open string (0)</li>
+    <li>Three times: note not played (X).</li>
+  </ul>
   <p>When 6 are selected, the result will be shown.</p>
   <p id="result"></p>
   <div class="container">
@@ -29,7 +34,7 @@
       {{#each notes}}
       <div class="divider">
         {{#if this.value}}
-        <p data-original="{{this.value}}" data-string="{{this.string}}">{{this.value}}</p>
+        <p data-string="{{this.string}}">{{this.value}}</p>
         {{/if}}
       </div>
       {{/each}}
