@@ -1,12 +1,12 @@
 var Fretboard = function(templateEngine){
   this.templateEngine = templateEngine;
   this.notes = [
-    {string:"1", value:"e"},
-    {string:"2", value:"b"},
-    {string:"3", value:"g"},
-    {string:"4", value:"d"},
-    {string:"5", value:"a"},
-    {string:"6", value:"e"},
+    {string:"1", value:"E"},
+    {string:"2", value:"B"},
+    {string:"3", value:"G"},
+    {string:"4", value:"D"},
+    {string:"5", value:"A"},
+    {string:"6", value:"E"},
     {string:"spacer"} //yuck, this it to add the first space to the left of each fret
   ];
   this.templateEngine.setSource("fret-template");

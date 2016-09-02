@@ -11,9 +11,34 @@ Notes.prototype = {
   onClick: function(e){
     var target = e.currentTarget;
     this.clearString(target);
+    this.toggleText(target);
 
-    this.domState.toggleClass(this.selectedClass, target.classList, this.maxSelection)
+    if(this.domState.hasClass("reset", target.classList)) {
+      this.domState.removeClass(this.selectedClass, target.classList);
+      this.domState.removeClass("reset", target.classList);
+      this.domState.removeClass("touched", target.classList);
+    }
+    else {
+      this.domState.addClass(this.selectedClass, target.classList);
+      this.domState.addClass("touched", target.classList);
+    }
+    //this.domState.toggleClass(this.selectedClass, target.classList, this.maxSelection)
+
     this.notifyObservers();
+  },
+  toggleText: function(target){
+    if(target.innerText === "X") {
+      this.domState.addClass("reset", target.classList);
+      this.resetLetter(target);
+      return;
+    }
+    if(target.innerText === "O") {
+      target.innerText = "X";
+      return;
+    }
+    if(this.domState.hasClass("touched", target.classList)) {
+      target.innerText = "O";
+    }
   },
   notifyObservers: function(){
    var currentlySelected = this.domState.elementsOfClass(this.selectedClass);
@@ -35,8 +60,12 @@ Notes.prototype = {
     for(var note of selectedAlready) {
       if(this.isSameNote(element, note)) continue;
       this.domState.removeClass(this.selectedClass, note.classList);
+      this.resetLetter(note);
     }
     return collision;
+  },
+  resetLetter: function(note){
+    note.innerText = note.dataset.original;
   },
   isSameNote: function(clickedElement, noteToCheck){
     var fretNumber = clickedElement.closest(this.parentClass).dataset.fret;

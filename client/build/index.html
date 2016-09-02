@@ -19,7 +19,7 @@
       {{#each notes}}
       <div class="divider">
         {{#if this.value}}
-        <p data-string="{{this.string}}">{{this.value}}</p>
+        <p data-original="{{this.value}}" data-string="{{this.string}}">{{this.value}}</p>
         {{/if}}
       </div>
       {{/each}}
