@@ -1,6 +1,5 @@
-var Handlebars = require('handlebars');
-
-var Fretboard = function(){
+var Fretboard = function(templateEngine){
+  this.templateEngine = templateEngine;
   this.notes = [
     {string:"1", value:"e"},
     {string:"2", value:"b"},
@@ -10,19 +9,17 @@ var Fretboard = function(){
     {string:"6", value:"e"},
     {string:"spacer"} //yuck, this it to add the first space to the left of each fret
   ];
+  this.templateEngine.setSource("fret-template");
   this.render();
+  
 }
 
 Fretboard.prototype = {
   render: function() {
-    var source = document.getElementById("fret-template").innerHTML;
-    var template = Handlebars.compile(source);
     var neck = document.getElementById("neck");
-
     for(var i = 0; i < 22;i++) {
       var context = {fret_id:(i + 1), notes: this.notes}
-      var html = template(context);
-      neck.innerHTML = neck.innerHTML + html;
+      this.templateEngine.render(context, neck);
     }
   }
 
