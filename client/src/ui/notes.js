@@ -17,10 +17,17 @@ Notes.prototype = {
   },
   notifyObservers: function(){
    var currentlySelected = this.domState.elementsOfClass(this.selectedClass);
-   this.notify({
-     maxReached: currentlySelected.length == this.maxSelection,
-     notesSelected: this.getNotes(currentlySelected)
-   });
+
+   if(!this.maxNotesReached(currentlySelected)) return;
+
+   for(var observer of this.observers){
+     observer.notify({
+        notesSelected: this.getNotes(currentlySelected)
+     });
+   }
+  },
+  maxNotesReached: function(currentlySelected){
+    return currentlySelected.length == this.maxSelection
   },
   clearString: function(element){
     var stringNumber = element.dataset.string;
@@ -56,12 +63,6 @@ Notes.prototype = {
       var elem = elements[i];   
       elem.onclick = this.onClick.bind(this);
     } 
-  },
-  notify: function( context ){
-    var observerCount = this.observers.length;
-    for(var observer of this.observers){
-      observer.notify( context );
-    }
   }
 }
 
