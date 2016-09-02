@@ -22,6 +22,11 @@ describe('chordy runner', function () {
     assert.equal(result, "G Suspended Fourth");
   });
 
+  it('should return G Dominant Seventh', function () {
+    var result = runner.findChord(["3", "2", "0", "0", "0", "1"]);
+    assert.equal(result, "G Dominant Seventh");
+  });
+
   it('should return chord not found', function () {
     var result = runner.findChord(["9", "3", "0", "0", "1", "3"]);
     assert.equal(result, "Chord not found");

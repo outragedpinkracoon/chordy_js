@@ -18,7 +18,9 @@ ChordFinder.prototype = {
 				var noteInterval = this.lookup.noteInterval(rootNoteIndex, note);
 				chordArray.push(noteInterval);
 			}
-			return chordArray.sort();
+			return chordArray.sort(function(a, b){
+				return parseInt(a)- parseInt(b)}
+			);
 		}
 }
 module.exports = ChordFinder
