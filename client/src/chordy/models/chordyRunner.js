@@ -21,6 +21,7 @@ ChordyRunner.prototype = {
   notify: function(context){
     if(context.maxReached) {
       var result = this.findChord(context.notesSelected);
+      console.log(context.notesSelected);
       document.getElementById('result').innerText = result;
     }
     else {

@@ -3,10 +3,12 @@ var Notes = function(domState, observers){
   this.domState = domState;
   this.maxSelection = 6;
   this.observers = observers;
+  //todo move these out
   this.parentClass = ".js-fret";
   this.selectedClass = "selected-note";
   this.resetFlag = "reset";
   this.touchedFlag = "touched";
+  this.specialNotes = ["0", "X"];
 }
 
 Notes.prototype = {
@@ -30,12 +32,12 @@ Notes.prototype = {
       this.resetLetter(target);
       return;
     }
-    if(target.innerText === "O") {
+    if(target.innerText === "0") {
       target.innerText = "X";
       return;
     }
     if(this.domState.hasClass(this.touchedFlag, target.classList)) {
-      target.innerText = "O";
+      target.innerText = "0";
     }
   },
   notifyObservers: function(){
@@ -73,8 +75,14 @@ Notes.prototype = {
     var results = [];
     for(var i = 1; i<7; i++){
       var playedNotes = this.getSelectedNotesOnString(i);
+      
       for(var note of playedNotes) {
+        if(this.specialNotes.indexOf(note.innerText) != -1) {
+          results.push(note.innerText);
+        }
+        else {
         results.push(note.closest(this.parentClass).dataset.fret);
+        }
       }
     }
     return results.reverse();
