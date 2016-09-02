@@ -17,6 +17,9 @@ ChordyRunner.prototype = {
     var rootNote = this.noteLookup.notes[rootNoteIndex];
     var chord = this.chordLookup.findChord(intervalsArray, rootNote);
     return chord;
+  },
+  notify: function(context){
+    console.log("I have been notified", context);
   }
 }
 module.exports = ChordyRunner

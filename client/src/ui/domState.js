@@ -18,6 +18,9 @@ DomState.prototype ={
     var selectedAlready = this.elementsOfClass(classToFind);
     return selectedAlready.length >= maxSelection;
   },
+  countClass: function(classToFind){
+    return this.elementsOfClass(classToFind).length;
+  },
   addClass: function(classToAdd, classList){
     classList.add(classToAdd);
   },  
