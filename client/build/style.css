@@ -200,6 +200,20 @@ FRETBOARD
   cursor: pointer;
 }
 
+.tuning li{
+  display:inline;
+  padding: 0 5px 0 5px;
+}
+
+.tuning {
+  padding: 0;
+  text-align: center;
+}
+
+.container {
+  width: 10em;
+}
+
 .hidden {
   display:none;
 }
