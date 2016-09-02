@@ -35,7 +35,15 @@ Fretboard.prototype = {
     } 
   },
   noteOnClick: function(e){
-    e.currentTarget.classList.add("selected");
+    var selectedClass = "selected-note";
+    var selectedAlready = document.querySelectorAll("."+selectedClass);
+    var classesOnElement = e.currentTarget.classList;
+    if(classesOnElement.contains(selectedClass)) {
+      classesOnElement.remove(selectedClass);
+      return;
+    }
+    if(selectedAlready.length >= 6) return;
+    classesOnElement.add(selectedClass);
   }
 }
 
