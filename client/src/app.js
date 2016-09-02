@@ -1,13 +1,14 @@
 var ChordyRunner = require('./chordy/models/chordyRunner')
 var Fretboard = require('./ui/fretboard')
 var Notes = require('./ui/notes')
+var DomState = require('./ui/domState')
 window.onload = function () {
   renderUI();
   setupChordy();
 
   function renderUI(){
     new Fretboard();
-    new Notes();
+    new Notes(new DomState());
   }
 
   function setupChordy(){

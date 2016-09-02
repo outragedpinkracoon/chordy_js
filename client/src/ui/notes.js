@@ -1,18 +1,13 @@
-var Notes = function(){
+var Notes = function(domState){
   this.attachEvents();
   this.selectedClass = "selected-note";
+  this.domState = domState;
+  this.maxSelection = 6;
 }
 
 Notes.prototype = {
   onClick: function(e){
-    var selectedAlready = document.querySelectorAll("."+this.selectedClass);
-    var classesOnElement = e.currentTarget.classList;
-    if(this.classIsSelected(classesOnElement)) {
-      this.removeClass(classesOnElement);
-      return;
-    }
-    if(selectedAlready.length >= 6) return;
-    classesOnElement.add(this.selectedClass);
+    this.domState.toggleClass(this.selectedClass, e.currentTarget.classList, this.maxSelection)
   },
   removeClass: function(classesOnElement){
     classesOnElement.remove(this.selectedClass);
