@@ -13,7 +13,7 @@
   <script id="fret-template" type="text/x-handlebars-template">
     <div class="js-fret fret-{{fret_id}}" id="fret-template">
       {{#each notes}}
-      <div class="string-divider">
+      <div class="divider" data-string="{{string}}">
         {{#if this.value}}
         <p>{{this.value}}</p>
         {{/if}}

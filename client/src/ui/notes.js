@@ -9,16 +9,17 @@ var Notes = function(domState, observers){
 Notes.prototype = {
   onClick: function(e){
     this.domState.toggleClass(this.selectedClass, e.currentTarget.classList, this.maxSelection)
-    var currentlySelected = this.domState.countClass(this.selectedClass);
+    var currentlySelected = this.domState.elementsOfClass(this.selectedClass);
     this.notify({
-      maxReached: currentlySelected == this.maxSelection
+      maxReached: currentlySelected.length == this.maxSelection,
+      notesSelected: this.getNotes(currentlySelected)
     });
   },
-  removeClass: function(classesOnElement){
-    classesOnElement.remove(this.selectedClass);
-  },
-  classIsSelected: function(classesOnElement){
-    return classesOnElement.contains(this.selectedClass);
+  getNotes: function(selectedNotes){
+    var results = [];
+    for(element of selectedNotes) {
+      results.push[element.innerText];
+    }
   },
   attachEvents: function(){
     var elements = document.querySelectorAll(".js-fret > div > p");
