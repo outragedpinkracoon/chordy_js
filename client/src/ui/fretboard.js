@@ -31,10 +31,11 @@ Fretboard.prototype = {
     
     for(var i =0; i < elements.length; i++){
       var elem = elements[i];   
-      elem.onclick = function(e){
-        e.currentTarget.classList.add("selected");
-      };
+      elem.onclick = this.noteOnClick;
     } 
+  },
+  noteOnClick: function(e){
+    e.currentTarget.classList.add("selected");
   }
 }
 

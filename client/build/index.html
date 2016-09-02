@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Chordy!</title>
-    <script src='bundle.js'></script>
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+<head>
+  <title>Chordy!</title>
+  <script src='bundle.js'></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
 
-  <body>
+<body>
+<div class="center" id ="neck">
+  </div>
 
-    <section>
-      <div id ="neck">
+  <script id="fret-template" type="text/x-handlebars-template">
+    <div class="js-fret fret-{{fret_id}}" id="fret-template">
+      {{#each notes}}
+      <div class="string-divider">
+        {{#if this.value}}
+        <p>{{this.value}}</p>
+        {{/if}}
       </div>
-    </section>
+      {{/each}}
+    </div>
+  </script>
 
-    <script id="fret-template" type="text/x-handlebars-template">
-      <div class="js-fret fret-{{fret_id}}" id="fret-template">
-        {{#each notes}}
-        <div class="string-divider">
-          {{#if this.value}}
-          <p>{{this.value}}</p>
-          {{/if}}
-        </div>
-        {{/each}}
-      </div>
-    </script>
-    
-  </body>
+</body>
 </html>
