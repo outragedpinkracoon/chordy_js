@@ -19,7 +19,7 @@ ChordyRunner.prototype = {
     return chord;
   },
   notify: function(context){
-    //do stuff
+    console.log(context);
   }
 }
 module.exports = ChordyRunner
