@@ -11,11 +11,11 @@
   </div>
 
   <script id="fret-template" type="text/x-handlebars-template">
-    <div class="js-fret fret-{{fret_id}}" id="fret-template">
+    <div data-fret="{{fret_id}}" class="js-fret fret-{{fret_id}}" id="fret-template">
       {{#each notes}}
       <div class="divider">
         {{#if this.value}}
-        <p data-string="{{string}}">{{this.value}}</p>
+        <p data-string="{{this.string}}">{{this.value}}</p>
         {{/if}}
       </div>
       {{/each}}

@@ -22,8 +22,15 @@ Notes.prototype = {
   },
   stringAlreadySelected: function(element){
     var stringNumber = element.dataset.string;
+    var fretNumber = element.closest('.js-fret').dataset.fret;
+
     var selectedAlready = this.getSelectedNotesOnString(stringNumber);
-    return selectedAlready.length > 0;
+    var collision = false;
+    for(var note of selectedAlready) {
+      if(note.closest('.js-fret').dataset.fret == fretNumber) continue;
+      collision = true;
+    }
+    return collision;
   },
   getNotes: function(selectedNotes){
     // var results = [];
