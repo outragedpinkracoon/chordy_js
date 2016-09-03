@@ -1,8 +1,9 @@
- const ChordyRunner = require('./chordy/models/chordyRunner')
- const Fretboard = require('./ui/fretboard')
- const Notes = require('./ui/notes')
- const DomState = require('./ui/domState')
- const TemplateEngine = require('./ui/templateEngine')
+const ChordyRunner = require('./chordy/models/chordyRunner')
+const Fretboard = require('./ui/fretboard')
+const Notes = require('./ui/notes')
+const DomState = require('./ui/domState')
+const TemplateEngine = require('./ui/templateEngine')
+const Keys = require('./ui/keys')
 
 window.onload = function () {
 
@@ -17,7 +18,8 @@ window.onload = function () {
       new Notes({
         domState:new DomState(), 
         observers:[this],
-        maxSelection: 6
+        maxSelection: 6,
+        keys: new Keys()
       });
     }
 

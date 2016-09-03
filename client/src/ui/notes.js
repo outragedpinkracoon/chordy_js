@@ -1,15 +1,10 @@
 class Notes {
   constructor(options) {
-    this.attachEvents();
     this.domState = options.domState;
     this.maxSelection = options.maxSelection;
     this.observers = options.observers;
-    //todo move these out
-    this.parentClass = ".js-fret";
-    this.selectedClass = "selected-note";
-    this.resetFlag = "reset";
-    this.touchedFlag = "touched";
-    this.specialNotes = ["0", "X"];
+    this.keys = options.keys;
+    this.attachEvents();
   }
 
   onClick(e) {
@@ -17,18 +12,18 @@ class Notes {
     this.clearString(target);
     this.toggleText(target);
 
-    if(this.domState.hasClass(this.resetFlag, target.classList)) {
-      this.domState.removeClasses([this.selectedClass, this.resetFlag, this.touchedFlag], target.classList);
+    if(this.domState.hasClass(this.keys.resetFlag, target.classList)) {
+      this.domState.removeClasses([this.keys.selectedClass, this.keys.resetFlag, this.keys.touchedFlag], target.classList);
     }
     else {
-      this.domState.addClasses([this.selectedClass, this.touchedFlag], target.classList);
+      this.domState.addClasses([this.keys.selectedClass, this.keys.touchedFlag], target.classList);
     }
     this.notifyObservers();
   }
 
   toggleText(target) {
     if(target.innerText === "X") {
-      this.domState.addClass(this.resetFlag, target.classList);
+      this.domState.addClass(this.keys.resetFlag, target.classList);
       this.resetLetter(target);
       return;
     }
@@ -36,13 +31,13 @@ class Notes {
       target.innerText = "X";
       return;
     }
-    if(this.domState.hasClass(this.touchedFlag, target.classList)) {
+    if(this.domState.hasClass(this.keys.touchedFlag, target.classList)) {
       target.innerText = "0";
     }
   }
 
   notifyObservers() {
-    const currentlySelected = this.domState.elementsOfClass(this.selectedClass);
+    const currentlySelected = this.domState.elementsOfClass(this.keys.selectedClass);
 
     for(const observer of this.observers){
       observer.notify({
@@ -66,14 +61,14 @@ class Notes {
     const collision = false;
     for(const note of selectedAlready) {
       if(this.isSameNote(element, note)) continue;
-      this.domState.removeClass(this.selectedClass, note.classList);
+      this.domState.removeClass(this.keys.selectedClass, note.classList);
       this.resetLetter(note);
     }
     return collision;
   }
 
   isSameNote(clickedElement, noteToCheck) {
-    const fretNumber = clickedElement.closest(this.parentClass).dataset.fret;
+    const fretNumber = clickedElement.closest(this.keys.fretClass).dataset.fret;
     return noteToCheck.closest('.js-fret').dataset.fret == fretNumber;
   }
 
@@ -83,11 +78,11 @@ class Notes {
       const playedNotes = this.getSelectedNotesOnString(i);
         
       for(const note of playedNotes) {
-        if(this.specialNotes.indexOf(note.innerText) != -1) {
+        if(this.keys.specialNotes.indexOf(note.innerText) != -1) {
           results.push(note.innerText);
         }
         else {
-        results.push(note.closest(this.parentClass).dataset.fret);
+        results.push(note.closest(this.keys.fretClass).dataset.fret);
         }
       }
     }
@@ -95,12 +90,12 @@ class Notes {
   }
 
   getSelectedNotesOnString (stringIndex) {
-    const items =  document.querySelectorAll('p[data-string="'+stringIndex+'"].selected-note');
+    const items =  document.querySelectorAll(this.keys.generateNoteSelector(stringIndex));
     return Array.prototype.slice.call(items);
   }
 
   attachEvents() {
-    const elements = document.querySelectorAll(".js-fret > div > p");
+    const elements = document.querySelectorAll(this.keys.noteSelector);
     
     for(let i =0; i < elements.length; i++){
       const elem = elements[i];   
