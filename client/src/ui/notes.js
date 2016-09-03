@@ -13,6 +13,10 @@ var Notes = function(domState, observers){
 
 Notes.prototype = {
   onClick: function(e){
+
+    var stuff = ["val"].map( s => s.length );
+    console.log(stuff);
+
     var target = e.currentTarget;
     this.clearString(target);
     this.toggleText(target);
@@ -75,7 +79,7 @@ Notes.prototype = {
     var results = [];
     for(var i = 1; i<7; i++){
       var playedNotes = this.getSelectedNotesOnString(i);
-      
+        
       for(var note of playedNotes) {
         if(this.specialNotes.indexOf(note.innerText) != -1) {
           results.push(note.innerText);
@@ -88,7 +92,8 @@ Notes.prototype = {
     return results.reverse();
   },
   getSelectedNotesOnString: function(stringIndex) {
-    return document.querySelectorAll('p[data-string="'+stringIndex+'"].selected-note');
+    var items =  document.querySelectorAll('p[data-string="'+stringIndex+'"].selected-note');
+    return Array.prototype.slice.call(items);
   },
   attachEvents: function(){
     var elements = document.querySelectorAll(".js-fret > div > p");

@@ -15,7 +15,7 @@ DomState.prototype ={
     classList.remove(classToRemove);
   },
   removeClasses: function(classesToRemove, classList){
-    for(classToRemove of classesToRemove) {
+    for(var classToRemove of classesToRemove) {
       this.removeClass(classToRemove, classList);
     }
   },
@@ -30,7 +30,7 @@ DomState.prototype ={
     classList.add(classToAdd);
   },  
   addClasses: function(classesToAdd, classList){
-    for(classToAdd of classesToAdd) {
+    for(var classToAdd of classesToAdd) {
       this.addClass(classToAdd, classList);
     }
   },
