@@ -1,46 +1,51 @@
-var DomState = function(){
-
-}
-
-DomState.prototype ={
-  toggleClass: function(classToFind, classList, maxSelection){
+class DomState {
+  toggleClass(classToFind, classList, maxSelection) {
     if(this.hasClass(classToFind, classList)) {
       this.removeClass(classToFind, classList);
       return;
     }
     if(this.maximumSelected(classToFind, maxSelection)) return;
     this.addClass(classToFind, classList);
-  },
-  removeClass: function(classToRemove, classList){
+  }
+
+  removeClass(classToRemove, classList) {
     classList.remove(classToRemove);
-  },
-  removeClasses: function(classesToRemove, classList){
+  }
+
+  removeClasses(classesToRemove, classList) {
     for(var classToRemove of classesToRemove) {
       this.removeClass(classToRemove, classList);
     }
-  },
-  maximumSelected: function(classToFind, maxSelection){
+  }
+
+  maximumSelected(classToFind, maxSelection) {
     var selectedAlready = this.elementsOfClass(classToFind);
     return selectedAlready.length >= maxSelection;
-  },
-  countClass: function(classToFind){
+  }
+
+  countClass(classToFind) {
     return this.elementsOfClass(classToFind).length;
-  },
-  addClass: function(classToAdd, classList){
+  }
+
+  addClass(classToAdd, classList) {
     classList.add(classToAdd);
-  },  
-  addClasses: function(classesToAdd, classList){
+  }
+
+  addClasses(classesToAdd, classList) {
     for(var classToAdd of classesToAdd) {
       this.addClass(classToAdd, classList);
     }
-  },
-  doesNotHaveClass: function(classToFind, classList){
+  }
+
+  doesNotHaveClass(classToFind, classList) {
     return !this.hasClass(classToFind, classList);
-  },
-  hasClass: function(classToFind, classList) {
+  }
+
+  hasClass(classToFind, classList) {
     return classList.contains(classToFind);
-  },
-  elementsOfClass: function(classToFind){
+  }
+  
+  elementsOfClass(classToFind) {
     return document.querySelectorAll("."+classToFind);
   }
 }

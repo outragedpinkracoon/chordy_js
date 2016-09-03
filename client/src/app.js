@@ -6,11 +6,26 @@ var TemplateEngine = require('./ui/templateEngine')
 
 window.onload = function () {
 
-  var chordy = new ChordyRunner();
-  renderUI(chordy);
+  var App = class {
+    constructor(){
+      this.chordy = new ChordyRunner();
+      this.renderUI();
+    }
 
-  function renderUI(chordy){
-    new Fretboard(new TemplateEngine());
-    new Notes(new DomState(), [chordy]);
-  }
+    renderUI(chordy){
+      new Fretboard(new TemplateEngine());
+      new Notes(new DomState(), [this]);
+    }
+
+    notify(context) {
+      document.getElementById('result').innerText = ""
+      if(!context.maxReached) return;
+      
+      var result = this.chordy.findChord(context.notesSelected);
+      console.log(context.notesSelected);
+      document.getElementById('result').innerText = result;
+    }
+  };
+
+  new App();
 }
