@@ -15,7 +15,7 @@ class NoteLookup {
     this.interval = 0;
     this.currentLocation = rootNoteIndex;
 
-    var found = this.matchRootToEnd(noteToFind);
+    let found = this.matchRootToEnd(noteToFind);
     if (found) return this.interval;
     
     this.currentLocation = 0;
@@ -31,11 +31,11 @@ class NoteLookup {
   matchStartOfArrayToRoot(noteToFind, previousStartPoint) {
     return this.match(noteToFind, previousStartPoint);
 	}
-  
+
   match(noteToFind, endPointOfSearch) {
-    var found = false;
+    let found = false;
     while (this.currentLocation < endPointOfSearch) {
-      var currentNote = this.notes[this.currentLocation];
+      let currentNote = this.notes[this.currentLocation];
       if (noteToFind === currentNote) {
         found = true;
         break;

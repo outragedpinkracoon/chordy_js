@@ -16,10 +16,9 @@ class ChordLookup {
   }
 
   findChord (intervalsArray, rootNote) {
-    var result = rootNote + " ";
-    var key = this.convertToKey(intervalsArray);
-    console.log("key: ", key)
-    var chord = this.chordDictionary[key]
+    let result = rootNote + " ";
+    const key = this.convertToKey(intervalsArray);
+    const chord = this.chordDictionary[key]
     result = chord ? result + chord : "Chord not found";
     return result;
   }

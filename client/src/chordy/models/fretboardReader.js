@@ -6,51 +6,51 @@ class FretboardReader {
   }
   
   generateNotes(fretboardValues) {
-    var chordNotes = [];
+    const chordNotes = [];
     if (fretboardValues.length < this.tuning.length) return chordNotes;
 
-    var index = 0;
-    for(var fretNumber of fretboardValues) {
+    let index = 0;
+    for(const fretNumber of fretboardValues) {
       if (fretNumber.toLowerCase() ==="x") {
         index++;
         continue;
       }
-      var standardTuningNote = this.tuning[index];
-      var note = this.findNote(fretNumber, standardTuningNote);
+      const standardTuningNote = this.tuning[index];
+      const note = this.findNote(fretNumber, standardTuningNote);
       chordNotes.push(note);
       index++;
     }
 
-    var uniqueNotes = this.removeDuplicateNotes(chordNotes);
+    const uniqueNotes = this.removeDuplicateNotes(chordNotes);
     return uniqueNotes;
 
   }
 
   findNote(fretboardPosition, openNote) {
-    var frettedNoteIndex = this.frettedNoteIndex(fretboardPosition, openNote);
-    var frettedNote = this.notes[frettedNoteIndex];
+    const frettedNoteIndex = this.frettedNoteIndex(fretboardPosition, openNote);
+    const frettedNote = this.notes[frettedNoteIndex];
     return frettedNote;
   }
 
   frettedNoteIndex (fretboardPosition, openNote) {
-    var fretNumber = parseInt(fretboardPosition);
-    var noteIndex = this.notes.indexOf(openNote);
-    var frettedNoteIndex = fretNumber + noteIndex;
-    var validFrettedNoteIndex = this.validNoteIndex(frettedNoteIndex);
+    const fretNumber = parseInt(fretboardPosition);
+    const noteIndex = this.notes.indexOf(openNote);
+    const frettedNoteIndex = fretNumber + noteIndex;
+    const validFrettedNoteIndex = this.validNoteIndex(frettedNoteIndex);
     return validFrettedNoteIndex;
   }
 
   validNoteIndex(frettedNoteIndex) {
-    var numberOfNotes = this.notes.length;
+    const numberOfNotes = this.notes.length;
     if (frettedNoteIndex < numberOfNotes - 1) return frettedNoteIndex;
-    var overflowTimes = Math.floor(frettedNoteIndex / numberOfNotes);
-    var multiplier = overflowTimes * numberOfNotes;
+    const overflowTimes = Math.floor(frettedNoteIndex / numberOfNotes);
+    const multiplier = overflowTimes * numberOfNotes;
     return frettedNoteIndex - multiplier;
   }
 
   removeDuplicateNotes(chordNotes) {
-    var uniqueNotes = [];
-    for(var note of chordNotes) {
+    const uniqueNotes = [];
+    for(const note of chordNotes) {
       if (uniqueNotes.indexOf(note) == -1) {
         uniqueNotes.push(note);
       }

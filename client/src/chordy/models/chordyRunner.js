@@ -1,7 +1,7 @@
-var ChordFinder = require('./chordFinder');
-var FretboardReader = require('./fretboardReader');
-var NoteLookup = require('./noteLookup');
-var ChordLookup = require('./chordLookup');
+const ChordFinder = require('./chordFinder');
+const FretboardReader = require('./fretboardReader');
+const NoteLookup = require('./noteLookup');
+const ChordLookup = require('./chordLookup');
 
 class ChordyRunner {
   constructor() { 
@@ -12,11 +12,11 @@ class ChordyRunner {
   }
 
   findChord(fretboardConfig) {
-    var chordNotes = this.reader.generateNotes(fretboardConfig);
-    var rootNoteIndex = this.chordFinder.rootNoteIndex(chordNotes);
-    var intervalsArray = this.chordFinder.noteIntervals(chordNotes, rootNoteIndex);
-    var rootNote = this.noteLookup.notes[rootNoteIndex];
-    var chord = this.chordLookup.findChord(intervalsArray, rootNote);
+    const chordNotes = this.reader.generateNotes(fretboardConfig);
+    const rootNoteIndex = this.chordFinder.rootNoteIndex(chordNotes);
+    const intervalsArray = this.chordFinder.noteIntervals(chordNotes, rootNoteIndex);
+    const rootNote = this.noteLookup.notes[rootNoteIndex];
+    const chord = this.chordLookup.findChord(intervalsArray, rootNote);
     return chord;
   }
 }

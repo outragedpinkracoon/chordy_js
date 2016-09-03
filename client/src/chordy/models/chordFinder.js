@@ -5,20 +5,20 @@ class ChordFinder {
 
   findChord(chordNotes) {
 		if (chordNotes.length == 1) return chordNotes[0];
-		var index = this.rootNoteIndex(chordNotes);
+		const index = this.rootNoteIndex(chordNotes);
 		return index.toString();
 	}
 
   rootNoteIndex(chordNotes) {
-		var rootNote = chordNotes[0];
+		const rootNote = chordNotes[0];
 		return this.lookup.noteIndex(rootNote);
 	}
 
   noteIntervals(chordNotes, rootNoteIndex)
 	{
-		var chordArray = []
-		for (var note of chordNotes) {
-			var noteInterval = this.lookup.noteInterval(rootNoteIndex, note);
+		const chordArray = []
+		for (const note of chordNotes) {
+			const noteInterval = this.lookup.noteInterval(rootNoteIndex, note);
 			chordArray.push(noteInterval);
 		}
 		return chordArray.sort(function(a, b){
