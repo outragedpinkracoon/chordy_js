@@ -13,10 +13,6 @@ var Notes = function(domState, observers){
 
 Notes.prototype = {
   onClick: function(e){
-
-    var stuff = ["val"].map( s => s.length );
-    console.log(stuff);
-
     var target = e.currentTarget;
     this.clearString(target);
     this.toggleText(target);
