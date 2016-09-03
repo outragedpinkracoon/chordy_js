@@ -1,9 +1,9 @@
 class Notes {
-  constructor(domState, observers) {
+  constructor(options) {
     this.attachEvents();
-    this.domState = domState;
-    this.maxSelection = 6;
-    this.observers = observers;
+    this.domState = options.domState;
+    this.maxSelection = options.maxSelection;
+    this.observers = options.observers;
     //todo move these out
     this.parentClass = ".js-fret";
     this.selectedClass = "selected-note";
@@ -42,9 +42,9 @@ class Notes {
   }
 
   notifyObservers() {
-    var currentlySelected = this.domState.elementsOfClass(this.selectedClass);
+    const currentlySelected = this.domState.elementsOfClass(this.selectedClass);
 
-    for(var observer of this.observers){
+    for(const observer of this.observers){
       observer.notify({
          notesSelected: this.getNotes(currentlySelected),
          maxReached: this.maxNotesReached(currentlySelected)
@@ -55,16 +55,16 @@ class Notes {
   resetLetter(note){
     note.innerText = " ";
   }
-  
+
   maxNotesReached(currentlySelected) {
     return currentlySelected.length == this.maxSelection
   }
 
   clearString(element) {
-    var stringNumber = element.dataset.string;
-    var selectedAlready = this.getSelectedNotesOnString(stringNumber);
-    var collision = false;
-    for(var note of selectedAlready) {
+    const stringNumber = element.dataset.string;
+    const selectedAlready = this.getSelectedNotesOnString(stringNumber);
+    const collision = false;
+    for(const note of selectedAlready) {
       if(this.isSameNote(element, note)) continue;
       this.domState.removeClass(this.selectedClass, note.classList);
       this.resetLetter(note);
@@ -73,16 +73,16 @@ class Notes {
   }
 
   isSameNote(clickedElement, noteToCheck) {
-    var fretNumber = clickedElement.closest(this.parentClass).dataset.fret;
+    const fretNumber = clickedElement.closest(this.parentClass).dataset.fret;
     return noteToCheck.closest('.js-fret').dataset.fret == fretNumber;
   }
 
   getNotes(selectedNotes) {
-    var results = [];
-    for(var i = 1; i<7; i++){
-      var playedNotes = this.getSelectedNotesOnString(i);
+    const results = [];
+    for(let i = 1; i<7; i++){
+      const playedNotes = this.getSelectedNotesOnString(i);
         
-      for(var note of playedNotes) {
+      for(const note of playedNotes) {
         if(this.specialNotes.indexOf(note.innerText) != -1) {
           results.push(note.innerText);
         }
@@ -95,15 +95,15 @@ class Notes {
   }
 
   getSelectedNotesOnString (stringIndex) {
-    var items =  document.querySelectorAll('p[data-string="'+stringIndex+'"].selected-note');
+    const items =  document.querySelectorAll('p[data-string="'+stringIndex+'"].selected-note');
     return Array.prototype.slice.call(items);
   }
 
   attachEvents() {
-    var elements = document.querySelectorAll(".js-fret > div > p");
+    const elements = document.querySelectorAll(".js-fret > div > p");
     
-    for(var i =0; i < elements.length; i++){
-      var elem = elements[i];   
+    for(let i =0; i < elements.length; i++){
+      const elem = elements[i];   
       elem.onclick = this.onClick.bind(this);
     } 
   }

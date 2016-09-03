@@ -15,9 +15,9 @@ class Fretboard {
   }
 
   render() {
-    var neck = document.getElementById("neck");
-    for(var i = 0; i < 22;i++) {
-      var context = {fret_id:(i + 1), notes: this.notes}
+    const neck = document.getElementById("neck");
+    for(let i = 0; i < 22;i++) {
+      const context = {fret_id:(i + 1), notes: this.notes}
       this.templateEngine.render(context, neck);
     }
   }

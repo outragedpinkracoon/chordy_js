@@ -1,12 +1,12 @@
-var ChordyRunner = require('./chordy/models/chordyRunner')
-var Fretboard = require('./ui/fretboard')
-var Notes = require('./ui/notes')
-var DomState = require('./ui/domState')
-var TemplateEngine = require('./ui/templateEngine')
+ const ChordyRunner = require('./chordy/models/chordyRunner')
+ const Fretboard = require('./ui/fretboard')
+ const Notes = require('./ui/notes')
+ const DomState = require('./ui/domState')
+ const TemplateEngine = require('./ui/templateEngine')
 
 window.onload = function () {
 
-  var App = class {
+  const App = class {
     constructor(){
       this.chordy = new ChordyRunner();
       this.renderUI();
@@ -14,15 +14,18 @@ window.onload = function () {
 
     renderUI(chordy){
       new Fretboard(new TemplateEngine());
-      new Notes(new DomState(), [this]);
+      new Notes({
+        domState:new DomState(), 
+        observers:[this],
+        maxSelection: 6
+      });
     }
 
     notify(context) {
       document.getElementById('result').innerText = ""
       if(!context.maxReached) return;
       
-      var result = this.chordy.findChord(context.notesSelected);
-      console.log(context.notesSelected);
+      const result = this.chordy.findChord(context.notesSelected);
       document.getElementById('result').innerText = result;
     }
   };

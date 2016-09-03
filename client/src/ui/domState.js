@@ -13,13 +13,13 @@ class DomState {
   }
 
   removeClasses(classesToRemove, classList) {
-    for(var classToRemove of classesToRemove) {
+    for(const classToRemove of classesToRemove) {
       this.removeClass(classToRemove, classList);
     }
   }
 
   maximumSelected(classToFind, maxSelection) {
-    var selectedAlready = this.elementsOfClass(classToFind);
+    const selectedAlready = this.elementsOfClass(classToFind);
     return selectedAlready.length >= maxSelection;
   }
 
@@ -32,7 +32,7 @@ class DomState {
   }
 
   addClasses(classesToAdd, classList) {
-    for(var classToAdd of classesToAdd) {
+    for(const classToAdd of classesToAdd) {
       this.addClass(classToAdd, classList);
     }
   }
