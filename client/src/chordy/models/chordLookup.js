@@ -1,19 +1,21 @@
-var ChordFinder = function() {
-  this.chordDictionary = {
-    "0-4-7":"Major",
-    "0-3-7":"Minor",
-    "0-4-7-11":"Major Seventh",
-    "0-2-7":"Suspended Second",
-    "0-5-7":"Suspended Fourth",
-    "0-3-7-10":"Minor Seventh",
-    "0-4-7-10":"Dominant Seventh"
-  };
-}
-ChordFinder.prototype = {
-  convertToKey: function(intervalsArray) {
+class ChordLookup {
+  constructor() {
+    this.chordDictionary = {
+      "0-4-7":"Major",
+      "0-3-7":"Minor",
+      "0-4-7-11":"Major Seventh",
+      "0-2-7":"Suspended Second",
+      "0-5-7":"Suspended Fourth",
+      "0-3-7-10":"Minor Seventh",
+      "0-4-7-10":"Dominant Seventh"
+    };
+  }
+
+  convertToKey (intervalsArray) {
     return intervalsArray.join("-");
-  },
-  findChord: function(intervalsArray, rootNote) {
+  }
+
+  findChord (intervalsArray, rootNote) {
     var result = rootNote + " ";
     var key = this.convertToKey(intervalsArray);
     console.log("key: ", key)
@@ -22,4 +24,4 @@ ChordFinder.prototype = {
     return result;
   }
 }
-module.exports = ChordFinder
+module.exports = ChordLookup

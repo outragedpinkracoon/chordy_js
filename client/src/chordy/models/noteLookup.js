@@ -1,16 +1,17 @@
-var NoteLookup = function () {
-  this.notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
-  this.interval = 0;
-  this.currentLocation = 0;
-}
-
 //THIS WHOLE CLASS NEEDS WORK! Storing state in the instance variable
 // like this is bloody awful.
-NoteLookup.prototype = {
-  noteIndex: function (note) {
+class NoteLookup {
+  constructor() {
+    this.notes = ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"];
+    this.interval = 0;
+    this.currentLocation = 0;
+  }
+
+  noteIndex (note) {
     return this.notes.indexOf(note);
-  },
-  noteInterval: function (rootNoteIndex, noteToFind) {
+  }
+
+  noteInterval (rootNoteIndex, noteToFind) {
     this.interval = 0;
     this.currentLocation = rootNoteIndex;
 
@@ -21,13 +22,16 @@ NoteLookup.prototype = {
     found = this.matchStartOfArrayToRoot(noteToFind, rootNoteIndex);
 
     return found ? this.interval : -1;
-		},
+	}
+
   matchRootToEnd(noteToFind) {
     return this.match(noteToFind, this.notes.length);
-	},
+	}
+
   matchStartOfArrayToRoot(noteToFind, previousStartPoint) {
     return this.match(noteToFind, previousStartPoint);
-	},
+	}
+  
   match(noteToFind, endPointOfSearch) {
     var found = false;
     while (this.currentLocation < endPointOfSearch) {
