@@ -17,3 +17,5 @@ Chord finder takes in this array of notes and changes it into an array starting 
 CEG becomes [1,5,8]
 
 Chord lookup takes this and the root note, converts it to a string key and finds the relevant chord type in it's internal collection.
+
+![Screenshot](screenshot.png?raw=true "Screenshot")
