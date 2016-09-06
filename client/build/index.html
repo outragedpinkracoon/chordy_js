@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Chordy!</title>
   <script src='bundle.js'></script>
@@ -7,18 +8,26 @@
 </head>
 
 <body>
-  <h1>Chordy</h1>
-  <p>Chordy can tell you what chord you have played, based on the strings
-  you held on the fretboard.</p>
-  <p>Press the circles to select strings played on the fretboard.</p>
-  <ul>
-    <li>Once: hold note</li>
-    <li>Twice: open string (0)</li>
-    <li>Three times: note not played (X).</li>
-  </ul>
-  <p>When 6 are selected, the result will be shown.</p>
-  <p id="result"></p>
+  <h1 class="text-centered">Chordy</h1>
   <div class="container">
+    <p>Chordy can tell you what chord you have played, based on the strings you held on the fretboard.</p>
+    <p>Press the circles to select strings played on the fretboard.</p>
+    <table>
+      <tr>
+        <td><strong>Once:</strong> hold note</td>
+      </tr>
+      <tr>
+        <td><strong>Twice:</strong> open string (0)</td>
+      </tr>
+      <tr>
+        <td><strong>Three times:</strong> note not played (X).</td>
+      </tr>
+    </table>
+    <p>When 6 are selected, the result will be shown.</p>
+    <p id="result"></p>
+  </div>
+
+  <div id="guitar-container" class="centered">
     <ul class="tuning">
       <li>E</li>
       <li>A</li>
@@ -27,20 +36,20 @@
       <li>B</li>
       <li>E</li>
     </ul>
-    <div class="center" id ="neck"></div>
+    <div class="center" id="neck"></div>
   </div>
 
   <script id="fret-template" type="text/x-handlebars-template">
-    <div data-fret="{{fret_id}}" class="js-fret fret-{{fret_id}}" id="fret-template">
-      {{#each notes}}
-      <div class="divider">
-        {{#if this.value}}
-        <p data-string="{{this.string}}">{{this.value}}</p>
-        {{/if}}
+      <div data-fret="{{fret_id}}" class="js-fret fret-{{fret_id}}" id="fret-template">
+        {{#each notes}}
+        <div class="divider">
+          {{#if this.value}}
+          <p data-string="{{this.string}}">{{this.value}}</p>
+          {{/if}}
+        </div>
+        {{/each}}
       </div>
-      {{/each}}
-    </div>
-  </script>
-
+    </script>
 </body>
+
 </html>
