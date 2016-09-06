@@ -1,5 +1,7 @@
 Chordy allows a user to input a fretboard configuration with any tuning, and it will tell the user what the chord is.
 
+Live at: http://delicious-mind.surge.sh/
+
 It was originally made in [Python](https://github.com/Nathello/Chordy) to help my husband Chris learn, that's why the JS is a bit odd in places!
 
 This version is vanilla JS, with only Handlebars for templating. It uses pure CSS3 to render the fretboard - thanks to Russel Williams.
