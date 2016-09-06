@@ -1,0 +1,66 @@
+@import 'normalize.css';
+@import 'fretboard.css';
+@import '320.css';
+
+.tuning li{
+  display:inline;
+  padding: 0 5px 0 5px;
+}
+
+body {
+  font-family: Raleway;
+  color: #4E2F29;
+}
+
+.tuning {
+  padding: 0;
+  text-align: center;
+  color: brown;
+}
+
+#guitar-container {
+  width: 10em;
+}
+.text-centered {
+  text-align: center;
+}
+
+.centered {
+  margin: 0px auto;
+}
+
+.hidden {
+  display:none;
+}
+
+body {
+    background-color: burlywood;
+}
+
+.container {
+  margin: 0px auto;
+  text-align: center;
+  font-size: 1.2em;
+  padding: 5px;
+}
+
+h1 {
+  font-size: 2.8em;
+  font-family: Baloo Tamma;
+  margin-bottom: 0px;
+}
+
+.container p:first-child {
+  margin-top: 0px;
+}
+
+table {
+  margin: 0px auto;
+  text-align: left;
+}
+
+#result {
+  font-family: Baloo Tamma;
+  border-top: 1px dashed #4E2F29;
+  padding-top: 10px;
+}
