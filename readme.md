@@ -2,6 +2,8 @@ Chordy allows a user to input a fretboard configuration with any tuning, and it 
 
 Live at: http://delicious-mind.surge.sh/
 
+![Screenshot](screenshot.png?raw=true "Screenshot")
+
 It was originally made in [Python](https://github.com/Nathello/Chordy) to help my husband Chris learn, that's why the JS is a bit odd in places!
 
 This version is vanilla JS, with only Handlebars for templating. It uses pure CSS3 to render the fretboard - thanks to Russel Williams.
@@ -21,5 +23,3 @@ Chord finder takes in this array of notes and changes it into an array starting 
 CEG becomes [1,5,8]
 
 Chord lookup takes this and the root note, converts it to a string key and finds the relevant chord type in it's internal collection.
-
-![Screenshot](screenshot.png?raw=true "Screenshot")
